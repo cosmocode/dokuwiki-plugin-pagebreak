@@ -1,0 +1,7 @@
+base   pagebreak
+author Jonathan McBride
+email  j.mcbride@mail.utexas.edu
+date   2012-11-07
+name   pagebreak plugin
+desc   Forces ('suggests') a pagebreak after the line where a <pagebreak> tag is inserted
+url    https://www.dokuwiki.org/plugin:pagebreak
