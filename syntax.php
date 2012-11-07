@@ -17,61 +17,20 @@ require_once(DOKU_PLUGIN.'syntax.php');
  */
 class syntax_plugin_pagebreak extends DokuWiki_Syntax_Plugin {
 
-    /**
-     * return some info
-     */
-    function getInfo(){
-        return array(
-            'author' => 'Jonathan McBride and Chris Sturm',
-            'email'  => 'j.mcbride@mail.utexas.edu',
-            'date'   => '2007-08-08',
-            'name'   => 'Pagebreak Plugin',
-            'desc'   => 'Inserts " <br style="page-break-after:always;"> " into the html of the document for every <pagebreak> it encounters',
-            'url'    => 'NA',
-        );
-    }
-
-    /**
-     * What kind of syntax are we?
-     */
     function getType(){
         return 'substition';
     }
 
-    /**
-     * What kind of syntax do we allow (optional)
-     */
-//    function getAllowedTypes() {
-//        return array();
-//    }
-
-    /**
-     * What about paragraphs? (optional)
-     */
-//    function getPType(){
-//        return 'normal';
-//    }
-
-    /**
-     * Where to sort in?
-     */
     function getSort(){
         return 999;
     }
-
 
     /**
      * Connect pattern to lexer
      */
     function connectTo($mode) {
         $this->Lexer->addSpecialPattern('<pagebreak>',$mode,'plugin_pagebreak');
-//      $this->Lexer->addEntryPattern('<TEST>',$mode,'plugin_test');
     }
-
-//    function postConnect() {
-//      $this->Lexer->addExitPattern('</TEST>','plugin_test');
-//    }
-
 
     /**
      * Handle the match
@@ -96,9 +55,8 @@ class syntax_plugin_pagebreak extends DokuWiki_Syntax_Plugin {
      * Create output
      */
     function render($mode, &$renderer, $data) {
-        if($mode == 'xhtml'){
-            $renderer->doc .= "<br style=\"page-break-after:always;\">";            // ptype = 'normal'
-//            $renderer->doc .= "<p>Hello World!</p>";     // ptype = 'block'
+        if($mode === 'xhtml'){
+            $renderer->doc .= '<br class="plugin_pagebreak" />';
             return true;
         }
         return false;
