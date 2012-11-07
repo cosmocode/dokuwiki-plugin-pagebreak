@@ -55,10 +55,22 @@ class syntax_plugin_pagebreak extends DokuWiki_Syntax_Plugin {
      * Create output
      */
     function render($mode, &$renderer, $data) {
-        if($mode === 'xhtml'){
+        if ($mode === 'xhtml') {
             $renderer->doc .= '<br class="plugin_pagebreak" />';
             return true;
         }
+
+        if ($mode === 'odt') {
+            $renderer->autostyles['dw_plugin_pagebreak'] =
+            '<style:style style:name="dw_plugin_pagebreak" style:family="paragraph" style:parent-style-name="Text_20_body">
+                <style:paragraph-properties fo:break-before="page"/>
+             </style:style>';
+
+            $renderer->p_close();
+            $renderer->doc .= '<text:p text:style-name="dw_plugin_pagebreak" />';
+            $renderer->p_open();
+        }
+
         return false;
     }
 }
