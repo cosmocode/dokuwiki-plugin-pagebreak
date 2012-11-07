@@ -36,18 +36,6 @@ class syntax_plugin_pagebreak extends DokuWiki_Syntax_Plugin {
      * Handle the match
      */
     function handle($match, $state, $pos, &$handler){
-        switch ($state) {
-            case DOKU_LEXER_ENTER :
-                break;
-            case DOKU_LEXER_MATCHED :
-                break;
-            case DOKU_LEXER_UNMATCHED :
-                break;
-            case DOKU_LEXER_EXIT :
-                break;
-            case DOKU_LEXER_SPECIAL :
-                break;
-        }
         return array();
     }
 
